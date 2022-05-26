@@ -10,6 +10,7 @@
     <modules>
         <module>lagou-service-common</module>
         <module>lagou-service-product</module>
+        <module>lagou-service-page</module>
     </modules>
 
     <packaging>pom</packaging>
