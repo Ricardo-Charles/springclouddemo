@@ -11,6 +11,7 @@
         <module>lagou-service-common</module>
         <module>lagou-service-product</module>
         <module>lagou-service-page</module>
+        <module>lagou-cloud-eureka</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -22,7 +23,20 @@
         <version>2.1.6.RELEASE</version>
     </parent>
 
+    <dependencyManagement> <!--在parent中引入spring-cloud, 从而儿子maven不需要引入了-->
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+
         <!--web依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
