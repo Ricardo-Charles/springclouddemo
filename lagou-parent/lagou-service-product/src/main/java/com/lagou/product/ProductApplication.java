@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.core.env.Environment;
 
 
@@ -20,6 +21,7 @@ import java.net.UnknownHostException;
 @Slf4j
 @SpringBootApplication
 @MapperScan("com.lagou.product.mapper")
+@EnableEurekaClient // 把当前项目作为Eureka client 注册到 Eureka Server
 public class ProductApplication {
 
     public static void main(String[] args) throws UnknownHostException {
