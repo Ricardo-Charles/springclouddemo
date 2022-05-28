@@ -8,3 +8,15 @@ spring:
     username: root
     password: abc123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  client: # eureka server 本身也是eureka的一个客户端(client), 因为在集群下需要与其他 eureka server进行数据的同步
+    service-url: #客户端与EurekaServer交互的地址，如果是集群，也需要写其它Server的地址
+      defaultZone: http://localhost:9200/eureka # 记住端口9200是注册中心Eureka Server
+  #    register-with-eureka: true # 表示是否向Bureka中心注册自己的信息，因为自己就是Eureka server所以不进行注册,默认为true
+  #    fetch-registry: true #是否查询/拉取Eureka Server服务注册列表， 默认为true,自己就是服务不需要从EurekaServer获取服务信息,默认为true，置为false
+  instance: # 实例
+    #使用ip注册，否则会使用主机名注册了（此处考虑到对老版本的兼容，新版本经过实验都是ip）
+    prefer-ip-address: true
+    #自定义实例显示格式，加上版本号，便于多版本管理，注意是ip-address，早期版本是ipAddress
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
