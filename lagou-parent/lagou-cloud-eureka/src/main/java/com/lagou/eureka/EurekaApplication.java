@@ -3,7 +3,7 @@ package com.lagou.eureka;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
@@ -16,7 +16,8 @@ import java.net.UnknownHostException;
  * @Version: 0.0.1
  */
 @SpringBootApplication
-@EnableEurekaServer // 声明本module是一个Eureka服务
+// @EnableEurekaServer // 声明本module是一个Eureka服务
+@EnableDiscoveryClient // (可用于Nacos和Eureka等等其他注册中心)通用的, 把当前服务表示为注册中心的client
 @Slf4j
 public class EurekaApplication {
     public static void main(String[] args) throws UnknownHostException {

@@ -3,7 +3,7 @@ package com.lagou.page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.web.client.RestTemplate;
@@ -20,7 +20,8 @@ import java.net.UnknownHostException;
 
 @Slf4j
 @SpringBootApplication
-@EnableEurekaClient
+// @EnableEurekaClient
+@EnableDiscoveryClient // (可用于Nacos和Eureka等等其他注册中心)通用的, 把当前服务表示为注册中心的client
 public class PageApplication {
     public static void main(String[] args) throws UnknownHostException {
         SpringApplication app = new SpringApplication(PageApplication.class);
